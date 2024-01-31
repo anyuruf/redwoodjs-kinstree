@@ -11,6 +11,7 @@ import { Submit } from '@redwoodjs/forms'
 interface Props extends AriaButtonOptions<'button'> {
   disabled?: boolean
   className?: string
+  title: string
   children: ReactNode
 }
 
