@@ -34,7 +34,7 @@ const MemberForm = (props: MemberFormProps) => {
   }
 
   return (
-    <div className="mx-md-auto">
+    <div>
       <Form<FormMember> onSubmit={onSubmit} error={props.error}>
         <FormError
           error={props.error}
@@ -129,7 +129,7 @@ const MemberForm = (props: MemberFormProps) => {
               defaultValue="male"
               defaultChecked={props.member?.gender?.includes('male')}
               className="form-check-input"
-              errorClassName="rw-input rw-input-error"
+              errorClassName="form-check-input text-danger"
             />
             <div className="form-check-label">Male</div>
           </div>
@@ -141,14 +141,17 @@ const MemberForm = (props: MemberFormProps) => {
               defaultValue="female"
               defaultChecked={props.member?.gender?.includes('female')}
               className="form-check-input"
-              errorClassName="rw-input rw-input-error"
+              errorClassName="form-check-input text-danger"
             />
             <Label className="form-check-label" name="female">
               Female
             </Label>
           </div>
 
-          <FieldError name="gender" className="rw-field-error" />
+          <FieldError
+            name="gender"
+            className="list-group-item fw-bold text-danger"
+          />
         </div>
         <div className="row mb-3">
           <Label
@@ -234,7 +237,7 @@ const MemberForm = (props: MemberFormProps) => {
             className="list-group-item fw-bold text-danger"
           />
         </div>
-        <div className="mb-3">
+        <div className="text-center">
           <ButtonInput
             type="submit"
             disabled={props.loading}
