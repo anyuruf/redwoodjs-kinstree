@@ -1,0 +1,35 @@
+datasource db {
+  provider = "postgres"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider      = "prisma-client-js"
+  binaryTargets = "native"
+}
+
+// Define your own datamodels here and run `yarn redwood prisma migrate dev`
+// to create migrations for them and apply to your dev DB.
+// TODO: Please remove the following example:
+enum Gender {
+  male
+  female
+}
+
+model Member {
+  id    String     @id @db.Char(21)
+  firstName String  @db.VarChar(48)
+  lastName  String  @db.VarChar(48)
+  tribeClan String? @db.VarChar(96)
+  gender Gender
+  birthDate DateTime? @db.Date
+  deathDate DateTime? @db.Date
+  description String? @db.Text
+  avatarUrl String?
+}
+
+model Parent {
+  id    String     @id @db.Char(21)
+  source String  @db.Char(21)
+  target  String  @db.Char(21)
+}
