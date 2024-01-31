@@ -19,14 +19,14 @@ const ButtonInput = (props: Props) => {
   let { buttonProps } = useButton(props, ref)
   let { pressProps } = usePress(props)
   let { focusProps } = useFocus(props)
-  let { children, disabled, className } = props
+  let { children, disabled, className, ...otherProps } = props
 
   return (
     <Submit
       ref={ref}
       disabled={disabled}
       className={className}
-      {...mergeProps(buttonProps, pressProps, focusProps)}
+      {...mergeProps(buttonProps, pressProps, focusProps, otherProps)}
     >
       {children}
     </Submit>

@@ -37,8 +37,8 @@ const MembersList = ({ members }: FindMembers) => {
   }
 
   return (
-    <div className=" table-responsive">
-      <table className="table table-success table-boarded rounded-3 table-sm table-striped align-middle">
+    <div className="table-responsive">
+      <table className="table table-sm table-striped align-middle">
         <thead>
           <tr>
             <th>First name</th>
@@ -62,25 +62,25 @@ const MembersList = ({ members }: FindMembers) => {
               <td>{dateTag(member.deathDate)}</td>
               <td>{truncate(member.description)}</td>
               <td>
-                <nav className="rw-table-actions">
+                <nav className="d-flex align-content-between gap-1">
                   <Link
                     to={routes.member({ id: member.id })}
                     title={'Show member ' + member.id + ' detail'}
-                    className="rw-button rw-button-small"
+                    className="btn btn-outline-secondary btn-sm"
                   >
                     Show
                   </Link>
                   <Link
                     to={routes.editMember({ id: member.id })}
                     title={'Edit member ' + member.id}
-                    className="rw-button rw-button-small rw-button-blue"
+                    className="btn btn-outline-primary btn-sm"
                   >
                     Edit
                   </Link>
                   <button
                     type="button"
                     title={'Delete member ' + member.id}
-                    className="rw-button rw-button-small rw-button-red"
+                    className="btn btn-outline-danger btn-sm"
                     onClick={() => onDeleteClick(member.id)}
                   >
                     Delete

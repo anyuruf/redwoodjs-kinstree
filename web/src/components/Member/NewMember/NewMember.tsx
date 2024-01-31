@@ -42,7 +42,7 @@ const NewMember = () => {
   }
 
   return (
-    <FormWrapper title="New Member">
+    <FormWrapper title="Add Family Member">
       <MemberForm onSave={onSave} loading={loading} error={error} />
     </FormWrapper>
   )
