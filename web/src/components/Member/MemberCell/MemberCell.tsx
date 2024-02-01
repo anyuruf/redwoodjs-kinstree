@@ -29,7 +29,7 @@ export const Loading = () => (
 export const Empty = () => <div>Member not found</div>
 
 export const Failure = ({ error }: CellFailureProps) => (
-  <div className="rw-cell-error">{error?.message}</div>
+  <div className="fw-bold text-danger">{error?.message}</div>
 )
 
 export const Success = ({ member }: CellSuccessProps<FindMemberById>) => {

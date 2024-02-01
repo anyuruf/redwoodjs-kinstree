@@ -38,7 +38,7 @@ const MemberForm = (props: MemberFormProps) => {
       <Form<FormMember> onSubmit={onSubmit} error={props.error}>
         <FormError
           error={props.error}
-          wrapperClassName="border rounded m-2"
+          wrapperClassName="m-2"
           titleClassName="form-label fw-bold"
           listClassName="list-group"
         />

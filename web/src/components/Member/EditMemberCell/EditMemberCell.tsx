@@ -7,6 +7,7 @@ import { toast } from '@redwoodjs/web/toast'
 
 import MemberForm from 'src/components/Member/MemberForm'
 import FormWrapper from 'src/components/FormWrapper/FormWrapper'
+import Spinner from 'src/components/Spinner/Spinner'
 
 export const QUERY = gql`
   query EditMemberById($id: String!) {
@@ -39,7 +40,7 @@ const UPDATE_MEMBER_MUTATION = gql`
   }
 `
 
-export const Loading = () => <div>Loading...</div>
+export const Loading = () => <Spinner />
 
 export const Failure = ({ error }: CellFailureProps) => (
   <div className="rw-cell-error">{error?.message}</div>
@@ -63,7 +64,6 @@ export const Success = ({ member }: CellSuccessProps<EditMemberById>) => {
     input: UpdateMemberInput,
     id: EditMemberById['member']['id']
   ) => {
-    console.log(input)
     updateMember({ variables: { id, input } })
   }
 

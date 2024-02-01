@@ -1,6 +1,7 @@
 import { Link, routes, navigate } from '@redwoodjs/router'
 import { useMutation } from '@redwoodjs/web'
 import { toast } from '@redwoodjs/web/toast'
+import FormWrapper from 'src/components/FormWrapper/FormWrapper'
 
 import { dateTag, formatEnum } from 'src/lib/formatters'
 
@@ -40,10 +41,7 @@ const Member = ({ member }: Props) => {
 
   return (
     <>
-      <div className="container">
-        <header className="">
-          <h2 className="h5 fw-bold">Member {member.id} Detail</h2>
-        </header>
+      <FormWrapper title={`Member ${member.id} details`}>
         <table className="table">
           <tbody>
             <tr>
@@ -84,22 +82,23 @@ const Member = ({ member }: Props) => {
             </tr>
           </tbody>
         </table>
-      </div>
-      <nav className="rw-button-group">
-        <Link
-          to={routes.editMember({ id: member.id })}
-          className="rw-button rw-button-blue"
-        >
-          Edit
-        </Link>
-        <button
-          type="button"
-          className="rw-button rw-button-red"
-          onClick={() => onDeleteClick(member.id)}
-        >
-          Delete
-        </button>
-      </nav>
+
+        <nav className="d-flex justify-content-center gap-2">
+          <Link
+            to={routes.editMember({ id: member.id })}
+            className="btn btn-outline-primary btn-sm"
+          >
+            Edit
+          </Link>
+          <button
+            type="button"
+            className="btn btn-outline-danger btn-sm"
+            onClick={() => onDeleteClick(member.id)}
+          >
+            Delete
+          </button>
+        </nav>
+      </FormWrapper>
     </>
   )
 }

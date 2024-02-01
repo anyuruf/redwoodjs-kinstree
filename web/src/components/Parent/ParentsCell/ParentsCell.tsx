@@ -4,6 +4,7 @@ import { Link, routes } from '@redwoodjs/router'
 import type { CellSuccessProps, CellFailureProps } from '@redwoodjs/web'
 
 import Parents from 'src/components/Parent/Parents'
+import Spinner from 'src/components/Spinner/Spinner'
 
 export const QUERY = gql`
   query FindParents {
@@ -15,7 +16,7 @@ export const QUERY = gql`
   }
 `
 
-export const Loading = () => <div>Loading...</div>
+export const Loading = () => <Spinner />
 
 export const Empty = () => {
   return (
