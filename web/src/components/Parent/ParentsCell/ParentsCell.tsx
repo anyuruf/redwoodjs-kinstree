@@ -20,9 +20,9 @@ export const Loading = () => <Spinner />
 
 export const Empty = () => {
   return (
-    <div className="rw-text-center">
+    <div className="h4 fw-bold text-center">
       {'No parents yet. '}
-      <Link to={routes.newParent()} className="rw-link">
+      <Link to={routes.newParent()} className="link-secondary">
         {'Create one?'}
       </Link>
     </div>
@@ -30,7 +30,7 @@ export const Empty = () => {
 }
 
 export const Failure = ({ error }: CellFailureProps) => (
-  <div className="rw-cell-error">{error?.message}</div>
+  <div className="fw-bold text-danger">{error?.message}</div>
 )
 
 export const Success = ({ parents }: CellSuccessProps<FindParents>) => {

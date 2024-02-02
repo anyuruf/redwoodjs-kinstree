@@ -83,7 +83,7 @@ const Member = ({ member }: Props) => {
           </tbody>
         </table>
 
-        <nav className="d-flex justify-content-center gap-2">
+        <nav className="d-flex fw-bold justify-content-center gap-2">
           <Link
             to={routes.editMember({ id: member.id })}
             className="btn btn-outline-primary btn-sm"

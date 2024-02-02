@@ -5,7 +5,6 @@ import {
   Label,
   TextField,
   RadioField,
-  Submit,
   DateField,
 } from '@redwoodjs/forms'
 
@@ -240,6 +239,7 @@ const MemberForm = (props: MemberFormProps) => {
         <div className="text-center">
           <ButtonInput
             type="submit"
+            title="Add user to database"
             disabled={props.loading}
             className="btn btn-primary"
           >

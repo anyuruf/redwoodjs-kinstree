@@ -26,9 +26,9 @@ export const Loading = () => <Spinner />
 
 export const Empty = () => {
   return (
-    <div className="h2">
+    <div className="h5 fw-bold text-center">
       {'No members yet. '}
-      <Link to={routes.newMember()} className="link-dark">
+      <Link to={routes.newMember()} className="link-secondary">
         {'Create one?'}
       </Link>
     </div>

@@ -3,7 +3,7 @@ import React from 'react'
 import humanize from 'humanize-string'
 import { DateFormatterOptions, useDateFormatter } from 'react-aria'
 
-const MAX_STRING_LENGTH = 16
+const MAX_STRING_LENGTH = 12
 
 export const formatEnum = (values: string | string[] | null | undefined) => {
   let output = ''
