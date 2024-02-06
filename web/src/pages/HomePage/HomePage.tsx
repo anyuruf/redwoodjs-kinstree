@@ -20,7 +20,7 @@ const HomePage = () => {
             <ForceGraph graphData={myData} />
           </Suspense>
         </div>
-        <div className="col-md-4 col-lg-3">Column</div>
+        <div className="col-md-4 col-lg-3">Place holder</div>
       </div>
     </>
   )

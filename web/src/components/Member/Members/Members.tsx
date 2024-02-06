@@ -1,9 +1,10 @@
 import { Link, routes } from '@redwoodjs/router'
 import { useMutation } from '@redwoodjs/web'
 import { toast } from '@redwoodjs/web/toast'
+import { useState } from 'react'
 
 import { QUERY } from 'src/components/Member/MembersCell'
-import { dateTag, formatEnum, timeTag, truncate } from 'src/lib/formatters'
+import { dateTag, formatEnum, truncate } from 'src/lib/formatters'
 
 import type { DeleteMemberMutationVariables, FindMembers } from 'types/graphql'
 
@@ -16,6 +17,19 @@ const DELETE_MEMBER_MUTATION = gql`
 `
 
 const MembersList = ({ members }: FindMembers) => {
+  const [selectedRows, setSelectedRows] = useState([])
+
+  const handleCheckboxChange = (memberId: string) => {
+    // Check if the memberId is already in the selectedRows array
+    if (selectedRows.includes(memberId)) {
+      // If yes, remove it
+      setSelectedRows(selectedRows.filter((id) => id !== memberId))
+    } else {
+      // If no, add it
+      setSelectedRows([...selectedRows, memberId])
+    }
+  }
+
   const [deleteMember] = useMutation(DELETE_MEMBER_MUTATION, {
     onCompleted: () => {
       toast.success('Member deleted')
@@ -41,6 +55,7 @@ const MembersList = ({ members }: FindMembers) => {
       <table className="table table-sm table-striped align-middle">
         <thead>
           <tr>
+            <th></th>
             <th>First name</th>
             <th>Last name</th>
             <th>Tribe clan</th>
@@ -54,6 +69,15 @@ const MembersList = ({ members }: FindMembers) => {
         <tbody>
           {members.map((member) => (
             <tr key={member.id}>
+              <td>
+                <input
+                  className="form-check-input border-secondary"
+                  type="checkbox"
+                  value={member.id}
+                  onChange={() => handleCheckboxChange(member.id)}
+                  checked={selectedRows.includes(member.id)}
+                />
+              </td>
               <td>{truncate(member.firstName)}</td>
               <td>{truncate(member.lastName)}</td>
               <td>{truncate(member.tribeClan)}</td>
