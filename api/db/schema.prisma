@@ -22,6 +22,7 @@ model Member {
   lastName  String  @db.VarChar(48)
   tribeClan String? @db.VarChar(96)
   gender Gender
+  nationality String?  @db.VarChar(48)
   birthDate DateTime? @db.Date
   deathDate DateTime? @db.Date
   description String? @db.Text

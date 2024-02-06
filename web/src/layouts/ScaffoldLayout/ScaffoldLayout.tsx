@@ -19,7 +19,7 @@ const ScaffoldLayout = ({
   return (
     <div className="container-fluid">
       <Toaster toastOptions={{ className: 'rw-toast', duration: 6000 }} />
-      <header className="rw-header">
+      <nav className="navbar">
         <h1 className="h6 fw-bold text-center">
           <Link to={routes[titleTo]()} className="link-dark">
             {title}
@@ -28,7 +28,7 @@ const ScaffoldLayout = ({
         <Link to={routes[buttonTo]()} className="d-flex gap-1 btn btn-success">
           <span className="fw-bold">+</span> {buttonLabel}
         </Link>
-      </header>
+      </nav>
       <main className="container-fluid">{children}</main>
     </div>
   )

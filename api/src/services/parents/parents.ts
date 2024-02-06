@@ -18,6 +18,13 @@ export const createParent: MutationResolvers['createParent'] = ({ input }) => {
   })
 }
 
+export const createParents: MutationResolvers['createParents'] = async ({
+  input,
+}) => {
+  const parents = await db.parent.createMany({ data: input })
+  return parents
+}
+
 export const updateParent: MutationResolvers['updateParent'] = ({
   id,
   input,

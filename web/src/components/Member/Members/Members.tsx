@@ -55,7 +55,7 @@ const MembersList = ({ members }: FindMembers) => {
       <table className="table table-sm table-striped align-middle">
         <thead>
           <tr>
-            <th></th>
+            <th>#</th>
             <th>First name</th>
             <th>Last name</th>
             <th>Tribe clan</th>
@@ -71,7 +71,7 @@ const MembersList = ({ members }: FindMembers) => {
             <tr key={member.id}>
               <td>
                 <input
-                  className="form-check-input border-secondary"
+                  className="form-check-input border-success"
                   type="checkbox"
                   value={member.id}
                   onChange={() => handleCheckboxChange(member.id)}

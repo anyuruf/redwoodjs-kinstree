@@ -5,6 +5,10 @@ export const schema = gql`
     target: String!
   }
 
+  type cpResponse {
+    count: Int
+  }
+
   type Query {
     parents: [Parent!]! @requireAuth
     parent(id: String!): Parent @requireAuth
@@ -23,6 +27,7 @@ export const schema = gql`
 
   type Mutation {
     createParent(input: CreateParentInput!): Parent! @requireAuth
+    createParents(input: [CreateParentInput!]!): cpResponse! @requireAuth
     updateParent(id: String!, input: UpdateParentInput!): Parent! @requireAuth
     deleteParent(id: String!): Parent! @requireAuth
   }
