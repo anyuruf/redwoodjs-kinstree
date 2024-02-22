@@ -3,7 +3,6 @@ import {
   FormError,
   FieldError,
   Label,
-  TextField,
   RadioField,
   DateField,
 } from '@redwoodjs/forms'
@@ -12,11 +11,8 @@ import type { EditMemberById, UpdateMemberInput } from 'types/graphql'
 import type { RWGqlError } from '@redwoodjs/forms'
 import { formatDateForInput } from 'src/lib/formatters'
 import ButtonInput from 'src/components/ButtonInput/ButtonInput'
-
-export enum Gender {
-  female,
-  male,
-}
+import FormText from 'src/components/FormText/FormText'
+import DateInput from 'src/components/DateInput/DateInput'
 
 type FormMember = NonNullable<EditMemberById['member']>
 
@@ -38,80 +34,33 @@ const MemberForm = (props: MemberFormProps) => {
         <FormError
           error={props.error}
           wrapperClassName="m-2"
-          titleClassName="form-label fw-bold"
-          listClassName="list-group"
+          titleClassName="form-label text-danger fw-bold"
+          listClassName="list-group text-danger"
         />
-        <div className="row mb-3">
-          <Label
-            name="firstName"
-            className="form-label fw-bold"
-            errorClassName="form-label fw-bold text-danger"
-          >
-            First name
-          </Label>
+        <FormText
+          name="firstName"
+          label="First Name"
+          defaultValue={props.member?.firstName}
+          validation={{
+            required:
+              'Please! first name field is required for form submition.',
+          }}
+        />
 
-          <TextField
-            name="firstName"
-            defaultValue={props.member?.firstName}
-            className="form-control"
-            errorClassName="form-control border-danger"
-            validation={{
-              required:
-                'Please! first name field is required for form submition.',
-            }}
-          />
+        <FormText
+          name="lastName"
+          label="Last Name"
+          defaultValue={props.member?.lastName}
+          validation={{
+            required: 'Please! last name field is required for form submition.',
+          }}
+        />
 
-          <FieldError
-            name="firstName"
-            className="list-group-item fw-bold text-danger"
-          />
-        </div>
-        <div className="row mb-3">
-          <Label
-            name="lastName"
-            className="form-label fw-bold"
-            errorClassName="form-label fw-bold text-danger"
-          >
-            Last name
-          </Label>
-
-          <TextField
-            name="lastName"
-            defaultValue={props.member?.lastName}
-            className="form-control"
-            errorClassName="form-control border-danger"
-            validation={{
-              required:
-                'Please! last name field is required for form submition.',
-            }}
-          />
-
-          <FieldError
-            name="lastName"
-            className="list-group-item fw-bold text-danger"
-          />
-        </div>
-        <div className="row mb-3">
-          <Label
-            name="tribeClan"
-            className="form-label fw-bold"
-            errorClassName="form-label fw-bold text-danger"
-          >
-            Tribe clan
-          </Label>
-
-          <TextField
-            name="tribeClan"
-            defaultValue={props.member?.tribeClan}
-            className="form-control"
-            errorClassName="form-control border-danger"
-          />
-
-          <FieldError
-            name="tribeClan"
-            className="list-group-item fw-bold text-danger"
-          />
-        </div>
+        <FormText
+          name="tribeClan"
+          label="Kingdom-Clan"
+          defaultValue={props.member?.tribeClan}
+        />
         <div className="row mb-3">
           <Label
             name="gender"
@@ -152,90 +101,28 @@ const MemberForm = (props: MemberFormProps) => {
             className="list-group-item fw-bold text-danger"
           />
         </div>
-        <div className="row mb-3">
-          <Label
-            name="birthDate"
-            className="form-label fw-bold"
-            errorClassName="form-label fw-bold text-danger"
-          >
-            Birth date
-          </Label>
-
-          <DateField
-            name="birthDate"
-            defaultValue={formatDateForInput(props.member?.birthDate)}
-            className="form-control"
-            errorClassName="form-control border-danger"
-          />
-
-          <FieldError
-            name="birthDate"
-            className="list-group-item fw-bold text-danger"
-          />
-        </div>
-        <div className="row mb-3">
-          <Label
-            name="deathDate"
-            className="form-label fw-bold"
-            errorClassName="form-label fw-bold text-danger"
-          >
-            Death date
-          </Label>
-
-          <DateField
-            name="deathDate"
-            value={formatDateForInput(props.member?.deathDate)}
-            className="form-control"
-            errorClassName="form-control border-danger"
-          />
-
-          <FieldError
-            name="deathDate"
-            className="list-group-item fw-bold text-danger"
-          />
-        </div>
-        <div className="row mb-3">
-          <Label
-            name="description"
-            className="form-label fw-bold"
-            errorClassName="form-label fw-bold text-danger"
-          >
-            Description
-          </Label>
-
-          <TextField
-            name="description"
-            defaultValue={props.member?.description}
-            className="form-control"
-            errorClassName="form-control border-danger"
-          />
-
-          <FieldError
-            name="description"
-            className="list-group-item fw-bold text-danger"
-          />
-        </div>
-        <div className="row mb-3">
-          <Label
-            name="avatarUrl"
-            className="form-label fw-bold"
-            errorClassName="form-label fw-bold text-danger"
-          >
-            Avatar url
-          </Label>
-
-          <TextField
-            name="avatarUrl"
-            defaultValue={props.member?.avatarUrl}
-            className="form-control"
-            errorClassName="form-control border-danger"
-          />
-
-          <FieldError
-            name="avatarUrl"
-            className="list-group-item fw-bold text-danger"
-          />
-        </div>
+        <DateInput
+          name="birthDate"
+          defaultValue={formatDateForInput(props.member?.birthDate)}
+          label="Birth Date"
+          onChange={null}
+        />
+        <DateInput
+          name="deathDate"
+          label="Death Date"
+          defaultValue={formatDateForInput(props.member?.deathDate)}
+          onChange={null}
+        />
+        <FormText
+          name="description"
+          defaultValue={props.member?.description}
+          label="Description"
+        />
+        <FormText
+          name="nationality"
+          defaultValue={props.member?.nationality}
+          label="Nationality"
+        />
         <div className="text-center">
           <ButtonInput
             type="submit"

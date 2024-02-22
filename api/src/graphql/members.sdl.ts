@@ -6,8 +6,8 @@ export const schema = gql`
     tribeClan: String
     gender: Gender!
     nationality: String
-    birthDate: DateTime
-    deathDate: DateTime
+    birthDate: Date
+    deathDate: Date
     description: String
     avatarUrl: String
   }
@@ -29,8 +29,8 @@ export const schema = gql`
     tribeClan: String
     gender: Gender!
     nationality: String
-    birthDate: DateTime
-    deathDate: DateTime
+    birthDate: Date
+    deathDate: Date
     description: String
     avatarUrl: String
   }
@@ -41,8 +41,8 @@ export const schema = gql`
     tribeClan: String
     gender: Gender
     nationality: String
-    birthDate: DateTime
-    deathDate: DateTime
+    birthDate: Date
+    deathDate: Date
     description: String
     avatarUrl: String
   }

@@ -1,7 +1,4 @@
 import { Link, routes } from '@redwoodjs/router'
-import Nav from 'react-bootstrap/Nav'
-import Container from 'react-bootstrap/Container'
-import Navbar from 'react-bootstrap/Navbar'
 import { InputField, Form } from '@redwoodjs/forms'
 
 type KinstreeAppLayoutProps = {

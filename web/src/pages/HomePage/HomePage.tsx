@@ -1,5 +1,6 @@
 import { Metadata } from '@redwoodjs/web'
 import { Suspense } from 'react'
+import Spinner from 'src/components/Spinner/Spinner'
 
 const myData = {
   nodes: [{ id: 'a' }, { id: 'b' }, { id: 'c' }],
@@ -16,7 +17,7 @@ const HomePage = () => {
       <Metadata title="Kinstree" description="Home page" />
       <div className="container-fluid h-100 row">
         <div className="col-md-8 col-lg-9">
-          <Suspense fallback={<div>Loading...</div>}>
+          <Suspense fallback={<Spinner />}>
             <ForceGraph graphData={myData} />
           </Suspense>
         </div>

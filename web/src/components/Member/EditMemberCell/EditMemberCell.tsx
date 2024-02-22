@@ -20,6 +20,7 @@ export const QUERY = gql`
       birthDate
       deathDate
       description
+      nationality
       avatarUrl
     }
   }
@@ -35,6 +36,7 @@ const UPDATE_MEMBER_MUTATION = gql`
       birthDate
       deathDate
       description
+      nationality
       avatarUrl
     }
   }

@@ -14,6 +14,7 @@ export const QUERY = gql`
       lastName
       tribeClan
       gender
+      nationality
       birthDate
       deathDate
       description

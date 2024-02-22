@@ -1,13 +1,17 @@
 import { Link, routes, navigate } from '@redwoodjs/router'
 import { useMutation } from '@redwoodjs/web'
 import { toast } from '@redwoodjs/web/toast'
+import { useState } from 'react'
+import DeleteDialog from 'src/components/Dialog/Dialog'
 import FormWrapper from 'src/components/FormWrapper/FormWrapper'
 
 import { dateTag, formatEnum } from 'src/lib/formatters'
+import UseBoolean from 'src/lib/hooks/useBoolean/UseBoolean'
 
 import type {
   DeleteMemberMutationVariables,
   FindMemberById,
+  Member,
 } from 'types/graphql'
 
 const DELETE_MEMBER_MUTATION = gql`
@@ -33,14 +37,24 @@ const Member = ({ member }: Props) => {
     },
   })
 
-  const onDeleteClick = (id: DeleteMemberMutationVariables['id']) => {
-    if (confirm('Are you sure you want to delete member ' + id + '?')) {
-      deleteMember({ variables: { id } })
-    }
+  const deleteUser = (id: DeleteMemberMutationVariables['id']) => {
+    deleteMember({ variables: { id } })
   }
+
+  const {
+    cond: showModal,
+    turnTrue: showDeleteModal,
+    turnFalse: hideDeleteModal,
+  } = UseBoolean()
 
   return (
     <>
+      <DeleteDialog
+        showModal={showModal}
+        hideModal={hideDeleteModal()}
+        firstName={member.firstName}
+        deleteUser={deleteUser(member.id)}
+      />
       <FormWrapper title={`Member ${member.id} details`}>
         <table className="table">
           <tbody>
@@ -93,7 +107,7 @@ const Member = ({ member }: Props) => {
           <button
             type="button"
             className="btn btn-outline-danger btn-sm"
-            onClick={() => onDeleteClick(member.id)}
+            onClick={() => showDeleteModal()}
           >
             Delete
           </button>
