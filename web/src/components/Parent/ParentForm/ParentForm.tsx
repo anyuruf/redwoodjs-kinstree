@@ -9,6 +9,8 @@ import {
 
 import type { EditParentById, UpdateParentInput } from 'types/graphql'
 import type { RWGqlError } from '@redwoodjs/forms'
+import FormText from 'src/components/FormText/FormText'
+import ButtonInput from 'src/components/ButtonInput/ButtonInput'
 
 type FormParent = NonNullable<EditParentById['parent']>
 
@@ -25,55 +27,39 @@ const ParentForm = (props: ParentFormProps) => {
   }
 
   return (
-    <div className="rw-form-wrapper">
+    <div>
       <Form<FormParent> onSubmit={onSubmit} error={props.error}>
         <FormError
           error={props.error}
-          wrapperClassName="rw-form-error-wrapper"
-          titleClassName="rw-form-error-title"
-          listClassName="rw-form-error-list"
+          wrapperClassName="m-2"
+          titleClassName="form-label text-danger fw-bold"
+          listClassName="list-group text-danger"
         />
-
-        <Label
-          name="source"
-          className="rw-label"
-          errorClassName="rw-label rw-label-error"
-        >
-          Parent Id
-        </Label>
-
-        <TextField
+        <FormText
           name="source"
           defaultValue={props.parent?.source}
-          className="rw-input"
-          errorClassName="rw-input rw-input-error"
-          validation={{ required: true }}
+          label="Parent Id"
+          validation={{
+            required: 'Please! parent id field is required for form submition.',
+          }}
         />
-
-        <FieldError name="source" className="rw-field-error" />
-
-        <Label
-          name="target"
-          className="rw-label"
-          errorClassName="rw-label rw-label-error"
-        >
-          Sibling Id
-        </Label>
-
-        <TextField
+        <FormText
           name="target"
           defaultValue={props.parent?.target}
-          className="rw-input"
-          errorClassName="rw-input rw-input-error"
-          validation={{ required: true }}
+          label="Child Id"
+          validation={{
+            required: 'Please! child id field is required for form submition.',
+          }}
         />
-
-        <FieldError name="target" className="rw-field-error" />
-
-        <div className="rw-button-group">
-          <Submit disabled={props.loading} className="rw-button rw-button-blue">
+        <div className="text-center">
+          <ButtonInput
+            type="submit"
+            title="Add relation to database"
+            disabled={props.loading}
+            className="btn btn-primary"
+          >
             Save
-          </Submit>
+          </ButtonInput>
         </div>
       </Form>
     </div>

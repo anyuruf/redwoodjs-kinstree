@@ -14,7 +14,7 @@ const HomePage = () => {
   const ForceGraph = React.lazy(() => import('src/lib/ForceGraph'))
   return (
     <>
-      <Metadata title="Kinstree" description="Home page" />
+      <Metadata title="Home Page" description="Home page" />
       <div className="container-fluid h-100 row">
         <div className="col-md-8 col-lg-9">
           <Suspense fallback={<Spinner />}>

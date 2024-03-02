@@ -3,6 +3,7 @@ import type { FindParentById } from 'types/graphql'
 import type { CellSuccessProps, CellFailureProps } from '@redwoodjs/web'
 
 import Parent from 'src/components/Parent/Parent'
+import Spinner from 'src/components/Spinner/Spinner'
 
 export const QUERY = gql`
   query FindParentById($id: String!) {
@@ -14,7 +15,7 @@ export const QUERY = gql`
   }
 `
 
-export const Loading = () => <div>Loading...</div>
+export const Loading = () => <Spinner />
 
 export const Empty = () => <div>Parent not found</div>
 

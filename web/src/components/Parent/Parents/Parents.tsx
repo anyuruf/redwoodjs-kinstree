@@ -3,7 +3,6 @@ import { useMutation } from '@redwoodjs/web'
 import { toast } from '@redwoodjs/web/toast'
 
 import { QUERY } from 'src/components/Parent/ParentsCell'
-import { truncate } from 'src/lib/formatters'
 
 import type { DeleteParentMutationVariables, FindParents } from 'types/graphql'
 
@@ -31,48 +30,48 @@ const ParentsList = ({ parents }: FindParents) => {
   })
 
   const onDeleteClick = (id: DeleteParentMutationVariables['id']) => {
-    if (confirm('Are you sure you want to delete parent ' + id + '?')) {
+    if (confirm('You sure want to delete parent ' + id + '?')) {
       deleteParent({ variables: { id } })
     }
   }
 
   return (
-    <div className="rw-segment rw-table-wrapper-responsive">
-      <table className="rw-table">
+    <div className="table-responsive">
+      <table className="table table-sm table-striped align-middle">
         <thead>
           <tr>
             <th>Id</th>
-            <th>Source</th>
-            <th>Target</th>
+            <th>Parent Id</th>
+            <th>Child Id</th>
             <th>&nbsp;</th>
           </tr>
         </thead>
         <tbody>
           {parents.map((parent) => (
             <tr key={parent.id}>
-              <td>{truncate(parent.id)}</td>
-              <td>{truncate(parent.source)}</td>
-              <td>{truncate(parent.target)}</td>
+              <td>{parent.id}</td>
+              <td>{parent.source}</td>
+              <td>{parent.target}</td>
               <td>
-                <nav className="rw-table-actions">
+                <nav className="d-flex align-content-between gap-1">
                   <Link
                     to={routes.parent({ id: parent.id })}
                     title={'Show parent ' + parent.id + ' detail'}
-                    className="rw-button rw-button-small"
+                    className="btn btn-outline-secondary btn-sm"
                   >
                     Show
                   </Link>
                   <Link
                     to={routes.editParent({ id: parent.id })}
                     title={'Edit parent ' + parent.id}
-                    className="rw-button rw-button-small rw-button-blue"
+                    className="btn btn-outline-primary btn-sm"
                   >
                     Edit
                   </Link>
                   <button
                     type="button"
                     title={'Delete parent ' + parent.id}
-                    className="rw-button rw-button-small rw-button-red"
+                    className="btn btn-outline-danger btn-sm"
                     onClick={() => onDeleteClick(parent.id)}
                   >
                     Delete

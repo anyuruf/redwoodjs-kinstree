@@ -6,6 +6,8 @@ import { useMutation } from '@redwoodjs/web'
 import { toast } from '@redwoodjs/web/toast'
 
 import ParentForm from 'src/components/Parent/ParentForm'
+import FormWrapper from 'src/components/FormWrapper/FormWrapper'
+import Spinner from 'src/components/Spinner/Spinner'
 
 export const QUERY = gql`
   query EditParentById($id: String!) {
@@ -26,7 +28,7 @@ const UPDATE_PARENT_MUTATION = gql`
   }
 `
 
-export const Loading = () => <div>Loading...</div>
+export const Loading = () => <Spinner />
 
 export const Failure = ({ error }: CellFailureProps) => (
   <div className="rw-cell-error">{error?.message}</div>
@@ -54,20 +56,13 @@ export const Success = ({ parent }: CellSuccessProps<EditParentById>) => {
   }
 
   return (
-    <div className="rw-segment">
-      <header className="rw-segment-header">
-        <h2 className="rw-heading rw-heading-secondary">
-          Edit Parent {parent?.id}
-        </h2>
-      </header>
-      <div className="rw-segment-main">
-        <ParentForm
-          parent={parent}
-          onSave={onSave}
-          error={error}
-          loading={loading}
-        />
-      </div>
-    </div>
+    <FormWrapper title={`Edit Parent ${parent.id}`}>
+      <ParentForm
+        parent={parent}
+        onSave={onSave}
+        error={error}
+        loading={loading}
+      />
+    </FormWrapper>
   )
 }

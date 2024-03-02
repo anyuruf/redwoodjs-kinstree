@@ -2,6 +2,7 @@ import { navigate, routes } from '@redwoodjs/router'
 import { useMutation } from '@redwoodjs/web'
 import { toast } from '@redwoodjs/web/toast'
 import { nanoid } from 'nanoid'
+import FormWrapper from 'src/components/FormWrapper/FormWrapper'
 
 import ParentForm from 'src/components/Parent/ParentForm'
 
@@ -41,14 +42,9 @@ const NewParent = () => {
   }
 
   return (
-    <div className="rw-segment">
-      <header className="rw-segment-header">
-        <h2 className="rw-heading rw-heading-secondary">New Parent</h2>
-      </header>
-      <div className="rw-segment-main">
-        <ParentForm onSave={onSave} loading={loading} error={error} />
-      </div>
-    </div>
+    <FormWrapper title="Add New Parent">
+      <ParentForm onSave={onSave} loading={loading} error={error} />
+    </FormWrapper>
   )
 }
 

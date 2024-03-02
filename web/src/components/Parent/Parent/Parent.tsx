@@ -1,6 +1,7 @@
 import { Link, routes, navigate } from '@redwoodjs/router'
 import { useMutation } from '@redwoodjs/web'
 import { toast } from '@redwoodjs/web/toast'
+import FormWrapper from 'src/components/FormWrapper/FormWrapper'
 
 import {} from 'src/lib/formatters'
 
@@ -39,46 +40,39 @@ const Parent = ({ parent }: Props) => {
   }
 
   return (
-    <>
-      <div className="rw-segment">
-        <header className="rw-segment-header">
-          <h2 className="rw-heading rw-heading-secondary">
-            Parent {parent.id} Detail
-          </h2>
-        </header>
-        <table className="rw-table">
-          <tbody>
-            <tr>
-              <th>Id</th>
-              <td>{parent.id}</td>
-            </tr>
-            <tr>
-              <th>Source</th>
-              <td>{parent.source}</td>
-            </tr>
-            <tr>
-              <th>Target</th>
-              <td>{parent.target}</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <nav className="rw-button-group">
+    <FormWrapper title={`Parent ${parent.id} details`}>
+      <table className="table">
+        <tbody>
+          <tr>
+            <th>Id</th>
+            <td>{parent.id}</td>
+          </tr>
+          <tr>
+            <th>Source</th>
+            <td>{parent.source}</td>
+          </tr>
+          <tr>
+            <th>Target</th>
+            <td>{parent.target}</td>
+          </tr>
+        </tbody>
+      </table>
+      <nav className="d-flex fw-bold justify-content-center gap-2">
         <Link
           to={routes.editParent({ id: parent.id })}
-          className="rw-button rw-button-blue"
+          className="btn btn-outline-primary btn-sm"
         >
           Edit
         </Link>
         <button
           type="button"
-          className="rw-button rw-button-red"
+          className="btn btn-outline-danger btn-sm"
           onClick={() => onDeleteClick(parent.id)}
         >
           Delete
         </button>
       </nav>
-    </>
+    </FormWrapper>
   )
 }
 

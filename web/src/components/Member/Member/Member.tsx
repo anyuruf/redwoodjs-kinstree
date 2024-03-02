@@ -1,12 +1,9 @@
 import { Link, routes, navigate } from '@redwoodjs/router'
 import { useMutation } from '@redwoodjs/web'
 import { toast } from '@redwoodjs/web/toast'
-import { useState } from 'react'
-import DeleteDialog from 'src/components/Dialog/Dialog'
 import FormWrapper from 'src/components/FormWrapper/FormWrapper'
 
 import { dateTag, formatEnum } from 'src/lib/formatters'
-import UseBoolean from 'src/lib/hooks/useBoolean/UseBoolean'
 
 import type {
   DeleteMemberMutationVariables,
@@ -38,82 +35,70 @@ const Member = ({ member }: Props) => {
   })
 
   const deleteUser = (id: DeleteMemberMutationVariables['id']) => {
-    deleteMember({ variables: { id } })
+    if (confirm('You sure want to delete member?')) {
+      deleteMember({ variables: { id } })
+    }
   }
 
-  const {
-    cond: showModal,
-    turnTrue: showDeleteModal,
-    turnFalse: hideDeleteModal,
-  } = UseBoolean()
-
   return (
-    <>
-      <DeleteDialog
-        showModal={showModal}
-        hideModal={hideDeleteModal()}
-        firstName={member.firstName}
-        deleteUser={deleteUser(member.id)}
-      />
-      <FormWrapper title={`Member ${member.id} details`}>
-        <table className="table">
-          <tbody>
-            <tr>
-              <th>Id</th>
-              <td>{member.id}</td>
-            </tr>
-            <tr>
-              <th>First name</th>
-              <td>{member.firstName}</td>
-            </tr>
-            <tr>
-              <th>Last name</th>
-              <td>{member.lastName}</td>
-            </tr>
-            <tr>
-              <th>Tribe clan</th>
-              <td>{member.tribeClan}</td>
-            </tr>
-            <tr>
-              <th>Gender</th>
-              <td>{formatEnum(member.gender)}</td>
-            </tr>
-            <tr>
-              <th>Birth date</th>
-              <td>{dateTag(member.birthDate)}</td>
-            </tr>
-            <tr>
-              <th>Death date</th>
-              <td>{dateTag(member.deathDate)}</td>
-            </tr>
-            <tr>
-              <th>Description</th>
-              <td>{member.description}</td>
-            </tr>
-            <tr>
-              <th>Avatar url</th>
-              <td>{member.avatarUrl}</td>
-            </tr>
-          </tbody>
-        </table>
+    <FormWrapper title={`Member ${member.id} details`}>
+      <table className="table">
+        <tbody>
+          <tr>
+            <th>Id</th>
+            <td>{member.id}</td>
+          </tr>
+          <tr>
+            <th>First name</th>
+            <td>{member.firstName}</td>
+          </tr>
+          <tr>
+            <th>Last name</th>
+            <td>{member.lastName}</td>
+          </tr>
+          <tr>
+            <th>Tribe clan</th>
+            <td>{member.tribeClan}</td>
+          </tr>
+          <tr>
+            <th>Gender</th>
+            <td>{formatEnum(member.gender)}</td>
+          </tr>
+          <tr>
+            <th>Birth date</th>
+            <td>{dateTag(member.birthDate)}</td>
+          </tr>
+          <tr>
+            <th>Death date</th>
+            <td>{dateTag(member.deathDate)}</td>
+          </tr>
+          <tr>
+            <th>Description</th>
+            <td>{member.description}</td>
+          </tr>
+          <tr>
+            <th>Avatar url</th>
+            <td>{member.avatarUrl}</td>
+          </tr>
+        </tbody>
+      </table>
 
-        <nav className="d-flex fw-bold justify-content-center gap-2">
-          <Link
-            to={routes.editMember({ id: member.id })}
-            className="btn btn-outline-primary btn-sm"
-          >
-            Edit
-          </Link>
-          <button
-            type="button"
-            className="btn btn-outline-danger btn-sm"
-            onClick={() => showDeleteModal()}
-          >
-            Delete
-          </button>
-        </nav>
-      </FormWrapper>
-    </>
+      <nav className="d-flex fw-bold justify-content-center gap-2">
+        <Link
+          to={routes.editMember({ id: member.id })}
+          className="btn btn-outline-primary btn-sm"
+        >
+          Edit
+        </Link>
+        <button
+          type="button"
+          className="btn btn-outline-danger btn-sm"
+          onClick={() => deleteUser(member.id)}
+        >
+          Delete
+        </button>
+      </nav>
+    </FormWrapper>
   )
 }
 
