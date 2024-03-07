@@ -1,7 +1,7 @@
 import { useMutation } from '@redwoodjs/web'
 import { toast } from '@redwoodjs/web/toast'
 import { useState } from 'react'
-import { QUERY } from 'src/components/Member/MembersCell'
+import { QUERY } from 'src/components/Member/MembersCell/MembersResource'
 import type { DeleteMemberMutationVariables, FindMembers } from 'types/graphql'
 import MembersTable from './MembersTable/MembersTable'
 

@@ -16,6 +16,7 @@
     "@redwoodjs/web": "7.0.6",
     "bootstrap": "^5.3.2",
     "humanize-string": "2.1.0",
+    "lodash": "^4.17.21",
     "nanoid": "^5.0.4",
     "react": "18.2.0",
     "react-aria": "^3.31.1",
@@ -26,6 +27,7 @@
   "devDependencies": {
     "@redwoodjs/vite": "7.0.6",
     "@types/jest": "^29.5.12",
+    "@types/lodash": "^4.14.202",
     "@types/react": "18.2.37",
     "@types/react-dom": "18.2.15"
   }

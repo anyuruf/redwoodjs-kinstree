@@ -7086,6 +7086,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/lodash@npm:^4.14.202":
+  version: 4.14.202
+  resolution: "@types/lodash@npm:4.14.202"
+  checksum: 6064d43c8f454170841bd67c8266cc9069d9e570a72ca63f06bceb484cb4a3ee60c9c1f305c1b9e3a87826049fd41124b8ef265c4dd08b00f6766609c7fe9973
+  languageName: node
+  linkType: hard
+
 "@types/mime@npm:*":
   version: 3.0.4
   resolution: "@types/mime@npm:3.0.4"
@@ -22274,10 +22281,12 @@ __metadata:
     "@redwoodjs/vite": 7.0.6
     "@redwoodjs/web": 7.0.6
     "@types/jest": ^29.5.12
+    "@types/lodash": ^4.14.202
     "@types/react": 18.2.37
     "@types/react-dom": 18.2.15
     bootstrap: ^5.3.2
     humanize-string: 2.1.0
+    lodash: ^4.17.21
     nanoid: ^5.0.4
     react: 18.2.0
     react-aria: ^3.31.1

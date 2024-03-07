@@ -1,8 +1,6 @@
 import { DateField, FieldError, Label, useRegister } from '@redwoodjs/forms'
-import { ReactDatePickerProps } from 'react-datepicker'
-import 'react-datepicker/dist/react-datepicker.css'
 
-interface Props extends ReactDatePickerProps {
+interface Props extends Date {
   name: string
   defaultValue?: string
   label: string

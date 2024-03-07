@@ -1,4 +1,4 @@
-import MembersCell from 'src/components/Member/MembersCell'
+import { MembersCell } from 'src/components/Member/MembersCell/MembersResource'
 
 const MembersPage = () => {
   return <MembersCell />

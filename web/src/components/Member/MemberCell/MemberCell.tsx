@@ -3,6 +3,7 @@ import type { FindMemberById } from 'types/graphql'
 import type { CellSuccessProps, CellFailureProps } from '@redwoodjs/web'
 
 import Member from 'src/components/Member/Member'
+import { registerFragment } from '@redwoodjs/web/dist/apollo/fragmentRegistry'
 
 export const QUERY = gql`
   query FindMemberById($id: String!) {
@@ -19,7 +20,6 @@ export const QUERY = gql`
     }
   }
 `
-
 export const Loading = () => (
   <div className="spinner-border" text-secondary role="status">
     <span className="visually-hidden">Loading...</span>

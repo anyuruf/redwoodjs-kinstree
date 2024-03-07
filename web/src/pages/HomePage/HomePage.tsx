@@ -1,5 +1,6 @@
 import { Metadata } from '@redwoodjs/web'
 import { Suspense } from 'react'
+import Home from 'src/components/Home/Home'
 import Spinner from 'src/components/Spinner/Spinner'
 
 const myData = {
@@ -11,18 +12,11 @@ const myData = {
 }
 
 const HomePage = () => {
-  const ForceGraph = React.lazy(() => import('src/lib/ForceGraph'))
+  // const ForceGraph = React.lazy(() => import('src/lib/ForceGraph'))
   return (
     <>
       <Metadata title="Home Page" description="Home page" />
-      <div className="container-fluid h-100 row">
-        <div className="col-md-8 col-lg-9">
-          <Suspense fallback={<Spinner />}>
-            <ForceGraph graphData={myData} />
-          </Suspense>
-        </div>
-        <div className="col-md-4 col-lg-3">Place holder</div>
-      </div>
+      <Home />
     </>
   )
 }
