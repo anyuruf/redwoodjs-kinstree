@@ -11,9 +11,9 @@
     ]
   },
   "dependencies": {
-    "@redwoodjs/forms": "7.0.6",
-    "@redwoodjs/router": "7.0.6",
-    "@redwoodjs/web": "7.0.6",
+    "@redwoodjs/forms": "7.1.1",
+    "@redwoodjs/router": "7.1.1",
+    "@redwoodjs/web": "7.1.1",
     "bootstrap": "^5.3.2",
     "humanize-string": "2.1.0",
     "lodash": "^4.17.21",
@@ -25,7 +25,7 @@
     "sass": "^1.69.6"
   },
   "devDependencies": {
-    "@redwoodjs/vite": "7.0.6",
+    "@redwoodjs/vite": "7.1.1",
     "@types/jest": "^29.5.12",
     "@types/lodash": "^4.14.202",
     "@types/react": "18.2.37",

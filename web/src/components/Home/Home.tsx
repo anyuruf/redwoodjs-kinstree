@@ -2,7 +2,7 @@ import { HomeResource } from './HomeResource'
 
 const Home = () => {
   return (
-    <div className="container-fluid h-100 row">
+    <div className="row">
       <div className="col-md-8 col-lg-9">
         <HomeResource />
       </div>

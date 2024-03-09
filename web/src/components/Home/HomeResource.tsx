@@ -4,8 +4,6 @@ import Spinner from '../Spinner/Spinner'
 import { graphData } from 'types/graphql'
 import { registerFragment } from '@redwoodjs/web/dist/apollo/fragmentRegistry'
 import _cloneDeep from 'lodash/cloneDeep'
-// import { MemberFragment } from 'src/fragments/members'
-// import { ParentFragment } from 'src/fragments/parents'
 
 const ForceGraph = React.lazy(() => import('src/lib/ForceGraph'))
 
@@ -57,7 +55,13 @@ export const HomeResource = () => {
     const gData = _cloneDeep(data)
     return (
       <Suspense fallback={<Spinner />}>
-        <ForceGraph graphData={gData} />
+        <ForceGraph
+          graphData={gData}
+          nodeLabel={'firstName'}
+          nodeColor={(node) => {
+            return node.gender.toString() === 'Female' ? 'green' : 'blue'
+          }}
+        />
       </Suspense>
     )
   }
